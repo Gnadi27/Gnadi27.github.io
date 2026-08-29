@@ -216,10 +216,188 @@
     max-width: 600px;
   }
 
+  /* ── SELECTED HIGHLIGHTS ── */
+  .highlights {
+    margin-top: 52px;
+  }
+
+  .highlights__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+    margin-bottom: 20px;
+  }
+
+  .highlights__eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--accent-dim);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+
+  .highlights__title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: var(--text);
+  }
+
+  .highlights__hint {
+    max-width: 300px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text-dim);
+    text-align: right;
+  }
+
+  .highlights__viewport {
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: none;
+    scrollbar-width: none;
+    padding-bottom: 10px;
+  }
+
+  .highlights__viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  .highlights__viewport:focus-visible {
+    outline: 1px solid var(--accent);
+    outline-offset: 5px;
+  }
+
+  .highlights__track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(250px, 36%);
+    align-items: stretch;
+    gap: 12px;
+    list-style: none;
+  }
+
+  .highlights__track > li {
+    display: flex;
+  }
+
+  .highlight {
+    width: 100%;
+    height: 100%;
+    min-height: 176px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    color: var(--text);
+    background: var(--bg-elevated);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    scroll-snap-align: start;
+    transition: border-color 0.25s, background 0.25s, transform 0.25s;
+  }
+
+  .highlight:hover {
+    color: var(--text);
+    background: var(--bg-card);
+    border-color: var(--accent-dim);
+    transform: translateY(-2px);
+  }
+
+  .highlight:focus-visible {
+    outline: 1px solid var(--accent);
+    outline-offset: -3px;
+    border-color: var(--accent);
+  }
+
+  .highlight__meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--accent-dim);
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    margin-bottom: 13px;
+  }
+
+  .highlight__title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin-bottom: 9px;
+  }
+
+  .highlight__teaser {
+    font-size: 12px;
+    line-height: 1.65;
+    color: var(--text-muted);
+  }
+
+  .highlight__link {
+    margin-top: auto;
+    padding-top: 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .highlight:hover .highlight__link,
+  .highlight:focus-visible .highlight__link {
+    color: var(--accent);
+  }
+
+  .highlights__controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .highlights__control {
+    width: 34px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    background: transparent;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+  }
+
+  .highlights__control:hover:not(:disabled),
+  .highlights__control:focus-visible {
+    color: var(--accent);
+    border-color: var(--accent-dim);
+    background: var(--bg-elevated);
+  }
+
+  .highlights__control:focus-visible {
+    outline: 1px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .highlights__control:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+
   /* ── SECTIONS ── */
   .section {
     margin-bottom: 72px;
     animation: fadeUp 0.6s ease both;
+    scroll-margin-top: 32px;
   }
 
   .section__header {
@@ -260,11 +438,17 @@
     border-radius: 3px;
     transition: border-color 0.3s, transform 0.3s;
     position: relative;
+    scroll-margin-top: 32px;
   }
 
   .project:hover {
     border-color: var(--accent-dim);
     transform: translateX(4px);
+  }
+
+  .project:target {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px rgba(212, 165, 116, 0.16);
   }
 
   .project__top {
@@ -517,11 +701,51 @@
       min-width: 120px;
     }
 
+    .highlights {
+      margin-top: 40px;
+    }
+
+    .highlights__header {
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    .highlights__hint {
+      max-width: 460px;
+      margin-top: 8px;
+      text-align: left;
+    }
+
+    .highlights__track {
+      grid-auto-columns: minmax(245px, 72%);
+    }
+
     .skills-grid { grid-template-columns: 1fr; }
 
     .timeline-item {
       grid-template-columns: 1fr;
       gap: 8px;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .highlights__track {
+      grid-auto-columns: minmax(235px, 88%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+
+    .section,
+    .fade-in {
+      animation: none;
+      transition: none;
+    }
+
+    .project,
+    .highlight {
+      transition: none;
     }
   }
 
@@ -586,6 +810,75 @@
         </div>
         <img src="./profile.jpg" alt="Michael Gnadlinger at IEEE CASE conference" class="hero__photo">
       </div>
+
+      <nav class="highlights" aria-labelledby="highlights-title">
+        <div class="highlights__header">
+          <div>
+            <p class="highlights__eyebrow">Selected highlights</p>
+            <h2 class="highlights__title" id="highlights-title">If you only have a minute</h2>
+          </div>
+          <p class="highlights__hint">Six short routes into the work below. Hover to pause; select one to jump to the full story.</p>
+        </div>
+
+        <div class="highlights__viewport" id="highlights-viewport" tabindex="0" aria-label="Selected work highlights; moves continuously and can be scrolled horizontally">
+          <ul class="highlights__track">
+            <li>
+              <a class="highlight" href="#hypersonic-aerodynamics">
+                <span class="highlight__meta">Current focus · Aerodynamics</span>
+                <h3 class="highlight__title">Hypersonic aerodynamics</h3>
+                <p class="highlight__teaser">Control-fin design, automated five-million-point aero-database creation, CFD validation, and conjugate heat transfer.</p>
+                <span class="highlight__link">Explore this work&nbsp; <span aria-hidden="true">↓</span></span>
+              </a>
+            </li>
+            <li>
+              <a class="highlight" href="#independent-research">
+                <span class="highlight__meta">First-authored · Research</span>
+                <h3 class="highlight__title">Independent research in the USA</h3>
+                <p class="highlight__teaser">University of Michigan research resulting in a first-authored IEEE CASE paper and Best Application Paper finalist selection.</p>
+                <span class="highlight__link">Explore this work&nbsp; <span aria-hidden="true">↓</span></span>
+              </a>
+            </li>
+            <li>
+              <a class="highlight" href="#academic-research">
+                <span class="highlight__meta">TU Munich · Research</span>
+                <h3 class="highlight__title">Peer-reviewed research</h3>
+                <p class="highlight__teaser">Four years turning industrial evidence into scientific frameworks and IEEE publications.</p>
+                <span class="highlight__link">Explore this work&nbsp; <span aria-hidden="true">↓</span></span>
+              </a>
+            </li>
+            <li>
+              <a class="highlight" href="#rocket-fin-aerodynamics">
+                <span class="highlight__meta">Student club · Aerodynamics</span>
+                <h3 class="highlight__title">Rocket aerodynamics</h3>
+                <p class="highlight__teaser">Low-fidelity multi-regime analysis of subsonic, transonic, and supersonic rocket-fin loads.</p>
+                <span class="highlight__link">Explore this work&nbsp; <span aria-hidden="true">↓</span></span>
+              </a>
+            </li>
+            <li>
+              <a class="highlight" href="#early-fluid-dynamics">
+                <span class="highlight__meta">Gifted programs · Early focus</span>
+                <h3 class="highlight__title">Pre-university aerodynamics</h3>
+                <p class="highlight__teaser">Competitive gifted-student programs, with a repeated focus on fluid dynamics and flow simulation.</p>
+                <span class="highlight__link">See where it started&nbsp; <span aria-hidden="true">↓</span></span>
+              </a>
+            </li>
+            <li>
+              <a class="highlight" href="#publications">
+                <span class="highlight__meta">Selected output · Research</span>
+                <h3 class="highlight__title">Publications</h3>
+                <p class="highlight__teaser">Three IEEE papers, two theses, and an industry-focused book chapter.</p>
+                <span class="highlight__link">View publications&nbsp; <span aria-hidden="true">↓</span></span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="highlights__controls" role="group" aria-label="Highlight navigation">
+          <button class="highlights__control" type="button" data-highlights-previous aria-label="Show previous highlight">←</button>
+          <button class="highlights__control" type="button" data-highlights-toggle aria-label="Pause automatic highlight scrolling" aria-pressed="true"><span aria-hidden="true">Ⅱ</span></button>
+          <button class="highlights__control" type="button" data-highlights-next aria-label="Show next highlight">→</button>
+        </div>
+      </nav>
     </section>
 
     <!-- PROJECTS -->
@@ -597,14 +890,14 @@
       </div>
 
       <!-- Hypersonica -->
-      <div class="project fade-in">
+      <div class="project fade-in" id="hypersonic-aerodynamics">
         <div class="project__top">
           <h3 class="project__name">Hypersonic Vehicle Aerodynamics & Aero-Thermal Simulation</h3>
           <span class="project__year">Sept 2025 – present</span>
         </div>
         <p class="project__subtitle"><a href="https://www.hypersonica.com/">Hypersonica</a> — European Hypersonic Defence Startup</p>
         <p class="project__desc">
-          Aerodynamic intern at a fast-moving defence startup designing hypersonic vehicles. Owned control fin design end-to-end — developed an intuition for how geometry drives aerodynamic behavior at hypersonic speeds, then applied first principles and deliberate reasoning through targeted parameter studies to converge on an optimized design. Built automated aerodatabase generation toolchains around low-fidelity tools, spanning over 5 million flight points within a few minutes. Wrote custom C-code for aero-thermal coupling, meshed complex vehicle geometries, pushed and performed validatoin of CFD setups against literature-sourced experimental data. Upcoming Master's Thesis on RANS wall functions for hypersonic heat flux prediction.
+          Aerodynamic intern at a fast-moving defence startup designing hypersonic vehicles. Owned control fin design end-to-end — developed an intuition for how geometry drives aerodynamic behavior at hypersonic speeds, then applied first principles and deliberate reasoning through targeted parameter studies to converge on an optimized design. Built automated aerodatabase generation toolchains around low-fidelity tools, producing aerodynamic coefficients for more than 5 million flight points within minutes. Separately, wrote custom C code for aero-thermal coupling in conjugate heat transfer simulations, meshed complex vehicle geometries, and validated CFD setups against literature-sourced experimental data. Upcoming Master's Thesis on RANS wall functions for hypersonic heat flux prediction.
         </p>
         <div class="tags">
           <span class="tag">Hypersonics</span>
@@ -616,7 +909,7 @@
       </div>
 
       <!-- Independent Research -->
-      <div class="project fade-in">
+      <div class="project fade-in" id="independent-research">
         <div class="project__top">
           <h3 class="project__name">Independent Research & First-Authored IEEE Conference Paper</h3>
           <span class="project__year">May – Nov 2024</span>
@@ -647,7 +940,7 @@
       </div>
 
       <!-- AIS Research Assistant -->
-      <div class="project fade-in">
+      <div class="project fade-in" id="academic-research">
         <div class="project__top">
           <h3 class="project__name">Academic Research & Peer-Reviewed Publications</h3>
           <span class="project__year">Oct 2021 – July 2025</span>
@@ -709,7 +1002,7 @@
       </div>
 
       <!-- MASA -->
-      <div class="project fade-in">
+      <div class="project fade-in" id="rocket-fin-aerodynamics">
         <div class="project__top">
           <h3 class="project__name">Multi-Regime Rocket Fin Load Analysis Tool</h3>
           <span class="project__year">May – Nov 2024</span>
@@ -790,7 +1083,7 @@
       </div>
 
       <!-- Early Programs -->
-      <div class="project fade-in">
+      <div class="project fade-in" id="early-fluid-dynamics">
         <div class="project__top">
           <h3 class="project__name">Pre-University Science & Engineering Programs</h3>
           <span class="project__year">2016 – 2018</span>
@@ -1001,6 +1294,128 @@
   }, { threshold: 0.08 });
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Auto-advancing highlight rail with accessible manual controls
+  const highlightViewport = document.querySelector('.highlights__viewport');
+  const highlightTrack = document.querySelector('.highlights__track');
+  const originalHighlightItems = Array.from(highlightTrack?.children || []);
+  const highlightCards = Array.from(document.querySelectorAll('.highlight'));
+  const previousHighlight = document.querySelector('[data-highlights-previous]');
+  const toggleHighlights = document.querySelector('[data-highlights-toggle]');
+  const nextHighlight = document.querySelector('[data-highlights-next]');
+
+  if (highlightViewport && highlightTrack && originalHighlightItems.length && highlightCards.length && previousHighlight && toggleHighlights && nextHighlight) {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const scrollSpeed = 42;
+    let autoScrollEnabled = !reduceMotion.matches;
+    let temporarilyPaused = false;
+    let loopWidth = 0;
+    let previousFrameTime;
+
+    const duplicateItems = document.createDocumentFragment();
+    originalHighlightItems.forEach(item => {
+      const duplicate = item.cloneNode(true);
+      duplicate.setAttribute('aria-hidden', 'true');
+      duplicate.querySelectorAll('a, button').forEach(control => control.setAttribute('tabindex', '-1'));
+      duplicateItems.appendChild(duplicate);
+    });
+    highlightTrack.appendChild(duplicateItems);
+
+    const measureLoop = () => {
+      const allItems = Array.from(highlightTrack.children);
+      const firstDuplicate = allItems[originalHighlightItems.length];
+      loopWidth = firstDuplicate ? firstDuplicate.offsetLeft - allItems[0].offsetLeft : 0;
+
+      if (loopWidth && highlightViewport.scrollLeft >= loopWidth) {
+        highlightViewport.scrollLeft %= loopWidth;
+      }
+    };
+
+    const showHighlight = (direction) => {
+      if (!loopWidth) return;
+
+      const step = originalHighlightItems.length > 1
+        ? originalHighlightItems[1].offsetLeft - originalHighlightItems[0].offsetLeft
+        : originalHighlightItems[0].getBoundingClientRect().width;
+      let currentPosition = highlightViewport.scrollLeft % loopWidth;
+
+      if (direction < 0 && currentPosition < step) {
+        currentPosition += loopWidth;
+      }
+
+      highlightViewport.scrollLeft = currentPosition;
+      highlightViewport.scrollTo({
+        left: currentPosition + (direction * step),
+        behavior: reduceMotion.matches ? 'auto' : 'smooth'
+      });
+    };
+
+    const updateToggle = () => {
+      toggleHighlights.setAttribute('aria-pressed', String(autoScrollEnabled));
+      toggleHighlights.setAttribute('aria-label', autoScrollEnabled
+        ? 'Pause automatic highlight scrolling'
+        : 'Start automatic highlight scrolling');
+      toggleHighlights.innerHTML = autoScrollEnabled
+        ? '<span aria-hidden="true">Ⅱ</span>'
+        : '<span aria-hidden="true">▶</span>';
+    };
+
+    const setAutoScroll = (enabled) => {
+      autoScrollEnabled = enabled;
+      updateToggle();
+    };
+
+    const pauseTemporarily = () => {
+      temporarilyPaused = true;
+    };
+
+    const resumeAfterPause = () => {
+      temporarilyPaused = false;
+    };
+
+    const animateHighlights = (currentFrameTime) => {
+      if (previousFrameTime === undefined) previousFrameTime = currentFrameTime;
+      const elapsed = Math.min(currentFrameTime - previousFrameTime, 64);
+      previousFrameTime = currentFrameTime;
+
+      if (autoScrollEnabled && !temporarilyPaused && !document.hidden && loopWidth) {
+        highlightViewport.scrollLeft += scrollSpeed * (elapsed / 1000);
+        if (highlightViewport.scrollLeft >= loopWidth) {
+          highlightViewport.scrollLeft -= loopWidth;
+        }
+      }
+
+      window.requestAnimationFrame(animateHighlights);
+    };
+
+    previousHighlight.addEventListener('click', () => {
+      setAutoScroll(false);
+      showHighlight(-1);
+    });
+
+    nextHighlight.addEventListener('click', () => {
+      setAutoScroll(false);
+      showHighlight(1);
+    });
+
+    toggleHighlights.addEventListener('click', () => setAutoScroll(!autoScrollEnabled));
+    highlightViewport.addEventListener('mouseenter', pauseTemporarily);
+    highlightViewport.addEventListener('mouseleave', resumeAfterPause);
+    highlightViewport.addEventListener('focusin', pauseTemporarily);
+    highlightViewport.addEventListener('focusout', (event) => {
+      if (!highlightViewport.contains(event.relatedTarget)) resumeAfterPause();
+    });
+    highlightViewport.addEventListener('pointerdown', () => setAutoScroll(false), { passive: true });
+    highlightViewport.addEventListener('wheel', () => setAutoScroll(false), { passive: true });
+    window.addEventListener('resize', measureLoop);
+    reduceMotion.addEventListener('change', (event) => {
+      if (event.matches) setAutoScroll(false);
+    });
+
+    measureLoop();
+    updateToggle();
+    window.requestAnimationFrame(animateHighlights);
+  }
 
   // Active nav highlight
   const sections = document.querySelectorAll('.hero, .section');
